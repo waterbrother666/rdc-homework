@@ -266,7 +266,28 @@
     border-radius: 4px;
     font-size: 14px;
     transition: background 0.3s;
+    align-items: center;
+    position: relative;
+
+    padding-right: 45px;
+    transition: background 0.3s;
 }
+
+.red-btn:hover{
+    background-color: #ff1a1a;
+}
+
+.red-btn::after{
+    content: '>';
+    position:absolute;
+    right: 25px;
+    transition: transform 0.3s ease;
+}
+
+.red-btn:hover::after{
+    transform: translateX(3px);
+}
+
 /* ----------------- */
 
 
@@ -342,3 +363,304 @@
 }
 
 /* ------------------------------------- */
+
+/* ------------视频播放---------- */
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 500px; 
+    overflow: hidden; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1; 
+}
+
+.video-content {
+    position: relative;
+    justify-content: center;
+    z-index: 2;
+    padding: 20px;
+}
+
+.video-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.video-desc {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+/* ----------------------------- */
+
+
+/* ---------左文字 右视频轮播-------- */
+.story-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 50px;
+    background-color: #f7f7f7;
+    overflow: hidden;
+}
+
+/* ---左侧区域--- */
+.story-left{
+    flex: 1;
+    max-width: 500px;
+    padding-right: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.story-left::before{
+    content: "";
+    position: absolute;
+    background-image: url('/images/picture29.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    top: -50px;
+    left: -20px;
+    z-index: -1;
+    pointer-events: none;
+    /* 防止文字上方按钮的点击被误触 */
+} 
+
+.story-title{
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.story-desc {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 40px;
+    opacity: 0.8;
+}
+/* ------------- */
+
+
+
+
+/* --------右侧区域--------- */
+
+
+/* ---1.视频轮播--- */
+.story-right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.video-carousel-container {
+    width: 100%;
+    height: 100%;
+    perspective: 1500px; 
+    /* 父元素设置一个小距离 */
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.video-carousel-wrapper {
+    position: relative;
+    width: 80%; 
+    height: 100%;
+    transform-style: preserve-3d;
+    /* 保持子元素的3d效果  */
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transform: translate3d(0, 0, 0); 
+    /* 能使gpu加速提高动画的转化性能 */
+    z-index: 2;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.carousel-item video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-item.active{
+    transform: translate3d(0,0,100px);
+    z-index: 10;
+    opacity: 1;
+}
+
+.carousel-item.next{
+    transform: translate3d(40%,0,-100px) rotateY(-35deg);
+    z-index: 5;
+    opacity: 0.7;
+}
+
+.carousel-item.prev{
+    transform: translate3d(-40%,0,-100px) rotateY(35deg);
+    z-index: 5;
+    opacity: 0.7;
+}
+
+/* 设置一个更远的元素做储备 */
+.carousel-item.hide{
+    transform: translate3d(0,0,-300px);
+    opacity: 0;
+    z-index: 1;
+}
+/* --------------- */
+
+
+/* ---2.导航点--- */
+.carousel-indicators{
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap : 10px;
+}
+
+.dot{
+    width: 10px;
+    height: 10px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dot.active{
+    background-color: #e40012;
+    width: 25px;
+    border-radius: 5px;
+}
+
+/* -------------- */
+
+/* ------------------------ */
+
+
+/* -------------------------------- */
+
+
+/* -----------------合作过渡区域----------------- */
+
+.factory-section {
+    position: relative;
+    width: 100%;
+    min-height:300px;
+    background-image: url('/images/picture30.jpg'); 
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    padding: 80px 0;
+}
+
+
+/* 增加的小创意---防止文字看不见加一层暗层 */
+.factory-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.factory-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.factory-title {
+    font-size: 36px;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.factory-subtitle {
+    font-size: 18px;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.factory-btn-group {
+    margin-bottom: 20px;
+}
+
+.white-link {
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 15px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+.white-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+.factory-features {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding-top: 40px;
+}
+
+.feature-item {
+    flex: 1;
+    padding: 0 10px;
+}
+
+.feature-item h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.feature-item p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+/* --------------------------------------------- */
