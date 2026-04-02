@@ -145,3 +145,54 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
 //------------------------------------------------------------
+
+
+// ---------------悬浮变亮海报以及补全文字的轮播区域-------------
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('cardsContainer');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    let currentIndex = 0; 
+    const totalCards = 8; 
+    const cardsPerPage = 5.5; 
+    const maxIndex = totalCards - cardsPerPage;
+
+    function updateGallery() {
+        if(currentIndex === 3) {
+            const offfset = 2.5* (100 / cardsPerPage);
+            container.style.transform = `translateX(-${offfset}%)`;
+        }else{
+            const offset = currentIndex * (100 / cardsPerPage);
+            container.style.transform = `translateX(-${offset}%)`;
+        }
+
+
+        //到达边界时降低透明度提醒
+        prevBtn.style.opacity = currentIndex === 0 ? "0.3" : "1";
+        prevBtn.style.cursor = currentIndex === 0 ? "default" : "pointer";
+        
+        //由于显示5.5所以要大于
+        nextBtn.style.opacity = currentIndex >= maxIndex ? "0.3" : "1";
+        nextBtn.style.cursor = currentIndex >= maxIndex ? "default" : "pointer";
+    }
+
+    nextBtn.addEventListener('click', function(){
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateGallery();
+            //向右最多不过3
+        }
+    });
+
+    prevBtn.addEventListener('click', function(){
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateGallery();
+        }
+    });
+
+    updateGallery();
+});
+
+// -----------------------------------------------------------
