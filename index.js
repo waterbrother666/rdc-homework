@@ -196,3 +196,67 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // -----------------------------------------------------------
+
+// ------------给侧边栏绑定一个回到顶部的事件-----------
+document.getElementById('backToTop').addEventListener('click',function(){
+    window.scrollTo({
+        top:0,
+        behavior:'smooth',
+    })
+});
+//---------------------------------------------------
+
+
+// ---------------品牌图标轮播 无箭头区域--------------
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const brandContainer = document.getElementById('brandContainer');
+    const brandDotsContainer = document.getElementById('brandDots');
+    const brandItems = document.querySelectorAll('.brand-item');
+    
+    const total = brandItems.length;
+    const show = 4; //一面展示4张对应前面的25%
+    const maxIdx = total - show;//最多能滑动的次数
+    let currentIdx = 0;
+    let brandTimer = null;
+
+    //创造点一共有:展示加初始即4+1个点
+    for (let i = 0; i <= maxIdx; i++) {
+        const dot = document.createElement('div');
+        dot.className = (i === 0) ? 'brand-dot active' : 'brand-dot';
+        dot.onclick = function(){
+            currentIdx = i;
+            moveBrand();
+            playBrand();
+        };
+        brandDotsContainer.appendChild(dot);
+    }
+
+    const allBrandDots = document.querySelectorAll('.brand-dot');
+
+    //移动品牌图和活跃点
+    function moveBrand() {
+        const percent = 100 / show;
+        brandContainer.style.transform = `translateX(-${currentIdx * percent}%)`;
+        
+        allBrandDots.forEach((d, i) => {
+            d.classList.toggle('active', i === currentIdx);
+        });
+    }
+
+    // 3. 自动播放
+    function playBrand() {
+        clearInterval(brandTimer);
+        brandTimer = setInterval(() => {
+            currentIdx++;
+            if (currentIdx > maxIdx) currentIdx = 0;
+            moveBrand();
+        }, 3000);
+    }
+
+    playBrand();
+});
+
+
+// ------------------------------------------------
