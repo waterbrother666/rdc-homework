@@ -357,3 +357,195 @@
 }
 
 /* ---------------------------------------------- */
+
+
+/* ------------合作中心区域----------- */
+.chef-contact-section {
+    padding: 100px 0;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-main-title {
+    font-size: 32px;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.contact-focus {
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.focus-text {
+    font-size: 22px;
+    color: #333;
+    font-weight: 600;
+}
+
+.focus-line {
+    width: 100%; 
+    height: 4px;
+    background-color: #e40011;
+    margin-top: 8px;
+}
+
+.contact-desc {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 40px;
+    letter-spacing: 0.5px;
+}
+
+.contact-btn {
+    padding: 12px 35px;
+    font-size: 18px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #e40011;
+    transition: background 0.3s;
+}
+
+.contact-btn:hover{
+    background-color: #ff3344;
+}
+
+
+.contact-content{
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+/* 添加了一个箭头反转的效果 */
+
+.contact-content::after{
+    margin-top: 5px;
+    content: '∨';
+    margin-left: 10px;
+    font-weight: normal;
+    display: inline-block;
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.contact-btn:hover .contact-content::after{
+    transform: rotate(0deg);
+}
+
+/* ---------------------------------- */
+
+/* -------------一堆二维码区域-----------*/
+.contact-follow-section {
+    width: 100%;
+    padding: 80px 0 120px;
+    background-color: #f8f6f2;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.contact-header {
+    margin-bottom: 50px;
+}
+
+.contact-title {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-subtitle {
+    font-size: 14px;
+    color: #888;
+}
+
+.contact-main-container {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.contact-row {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.contact-card {
+    width: 160px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    position: relative;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon-wrapper,
+.contact-qr-wrapper {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* 设置一个正方形区域 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.contact-icon-font {
+    font-size: 32px !important;
+    /* 强制扩大图标的区域 */
+    color: #e40011;
+    margin-bottom: 10px;
+}
+
+.contact-info-text {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+}
+
+.contact-qr-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.contact-card-label {
+    position: absolute;
+    bottom: -30px;
+    left: 0;
+    width: 100%;
+    font-size: 14px;
+    color: #666;
+}
+
+.contact-mascot-img {
+    position: absolute;
+    bottom: 20px;
+    left: 80px;
+    width: 160px;
+    z-index: 2;
+}
+/* ------------------------------------- */
