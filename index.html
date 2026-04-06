@@ -10,10 +10,10 @@
 
     <header class="navbar">
         <div class="logo">
-            <img src="./images/logo.png" alt="海天logo"> 
+            <img src="./images/logo.png" alt="海天logo" id="backToToplogo"> 
         </div>
         <nav class="nav-links">
-            <a href="#">首页</a>
+            <a id="backToTopmainpage">首页</a>
             <a href="#">穿越千年的烟火气</a>
             <a href="#">挑剔的滋味哲学</a>
             <a href="#">全球美味计划</a>
@@ -263,19 +263,34 @@
 <!------------------------------------------------->
 
 
-<!----------------互动点击视频(虽然是图片)区域------------------->
-<section class="story-video-section">
+<!----------------互动点击视频区域------------------->
+<section class="story-video-section" id="videoTrigger">
     <div class="story-video-left">
         <h2 class="story-video-title">每一个微小的改变<br>都是为了不辜负爱</h2>
         <a href="#" class="red-btn">期待您的建议</a>
     </div>
 
     <div class="story-video-right">
-        <div class="static-image-container">
-            <img src="./images/video-cover.png" alt="品牌故事展示图" class="story-static-img">
+        <div class="video-cover-container" id="playVideoBtn">
+            <img src="./images/video-cover.png" alt="品牌故事展示图" class="story-cover-img">
+            
+            <!-- 播放按钮 由于图片内部已有这里做成隐形的 -->
+            <div class="play-overlay">
+                <div class="play-icon"></div>
+            </div>
         </div>
     </div>
 </section>
+
+<div id="videoModal" class="video-modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <video id="mainVideo" controls>
+            <source src="./images/view8.mp4" type="video/mp4">
+            您的浏览器不支持视频播放。
+        </video>
+    </div>
+</div>
 
 <!------------------------------------------------->
 

@@ -12,9 +12,10 @@ nextBtn.onclick = function(){
     const totalWidth = slider.scrollWidth;
     //向左的极限
     const maxScroll = -(totalWidth - containerWidth);
-    if(scrollAmount < maxScroll){
-        scrollAmount = maxScroll;
+    if(scrollAmount < maxScroll+300){
+        scrollAmount = maxScroll+300;
     }
+    //加300的原因是因为防止向左边移动的轮播超出了范围
     scrollAmount -= 300; 
     slider.style.transform = `translateX(${scrollAmount}px)`;
 };//已在css里面实现过渡
@@ -260,3 +261,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ------------------------------------------------
+
+// ---------------互动播放视频区域(补充版)------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取元素
+    const playBtn = document.getElementById('playVideoBtn');
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('mainVideo');
+    const closeBtn = document.querySelector('.close-btn');
+
+    playBtn.onclick = function() {
+        modal.style.display = "flex";
+        modalVideo.currentTime = 0; 
+        modalVideo.play();       
+    };
+
+    //暂停函数
+    const hideModal = function(){
+        modal.style.display = "none";
+        modalVideo.pause();
+    };
+
+    closeBtn.onclick = hideModal;
+
+    modal.onclick = (e) => {
+        if (e.target === modal) hideModal();
+    };
+    //点击背景一样能退出界面
+});
+// ------------------------------------------------
+
+// -------------补充遗漏 点击首页以及logo自动跳回顶部---------
+document.getElementById('backToToplogo').onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+    });
+};
+
+document.getElementById('backToTopmainpage').onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+    });
+};
+//-------------------------------------------------
